@@ -1,7 +1,6 @@
 <?php   
-
 // Clase persona
-class Persona{
+class Persona extends Modelo{
 
     // Atributos protegidos de la clase persona
     protected $nombre;
@@ -10,19 +9,9 @@ class Persona{
     protected $genero;
     protected $carrera;
 
-    // Constructor con parametros
-    // public function __construct($nombre, $apellido, $edad, $genero, $carrera)
-    // {
-    //     $this->nombre = $nombre;
-    //     $this->apellido = $apellido;
-    //     $this->edad = $edad;
-    //     $this->genero = $genero;
-    //     $this->carrera = $carrera;
-    // }
-
-    public function __construct()
+    public function __construct($id, $table, PDO $con)
     {
-        echo "Soy el contructor <br>";
+        parent::__construct($id, $table, $con);
     }
 
     // Metodos getters de los atributos
@@ -61,6 +50,6 @@ class Persona{
 
     // Metodo de la clase
     function saludar(){
-        return "Hola, mi nombre es: " . $this->nombre . " " . $this->apellido;
+        return "<p> Hola, mi nombre es: <b>" . $this->nombre . " " . $this->apellido. "</b> </p>";
     }
 }

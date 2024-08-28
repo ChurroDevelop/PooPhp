@@ -7,8 +7,13 @@ include_once ("Persona.php");
 class Aprendiz extends Persona{
 
     // Atributos propios del aprendiz
-    protected $cuenta;
-    protected $promedio;
+    private $cuenta;
+    private $promedio;
+
+    public function __construct(PDO $connection)
+    {
+        parent::__construct("id", "tb_persona", $connection);
+    }
 
     // Metodos getters 
     public function getCuenta(){
@@ -18,10 +23,16 @@ class Aprendiz extends Persona{
         return $this->promedio;
     }
 
+    // Metodos setters
     public function setCuenta($cuenta){
         $this->cuenta = $cuenta;
     }
     public function setPromedio($promedio){
         $this->promedio = $promedio;
+    }
+
+    // Metodo para mostrar
+    function cancelarMatricula(){
+        echo "<p> Cancelar la matricula del aprendiz: <b>" . $this->nombre . "</b> </p>";
     }
 }
