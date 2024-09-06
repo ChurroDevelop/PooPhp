@@ -47,9 +47,4 @@ class Persona extends Modelo{
     public function setCarrera($carrera){
         $this->carrera = $carrera;
     }
-
-    // Metodo de la clase
-    function saludar(){
-        return "<p> Hola, mi nombre es: <b>" . $this->nombre . " " . $this->apellido. "</b> </p>";
-    }
 }

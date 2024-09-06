@@ -30,9 +30,4 @@ class Aprendiz extends Persona{
     public function setPromedio($promedio){
         $this->promedio = $promedio;
     }
-
-    // Metodo para mostrar
-    function cancelarMatricula(){
-        echo "<p> Cancelar la matricula del aprendiz: <b>" . $this->nombre . "</b> </p>";
-    }
 }

@@ -4,19 +4,22 @@
         protected $table;
         protected $dataBase;
 
+        // Constructor de los datos entrantes
         public function __construct($id, $table, PDO $connection)
-        {
+{
             $this->id = $id;
             $this->table = $table;
             $this->dataBase = $connection;
         }
 
+        // Funcion para obtener todos los usuarios
         public function getAll(){
             $stm = $this->dataBase->prepare("SELECT * FROM {$this->table}");
             $stm->execute();
             return $stm->fetchAll();
         }
-        
+
+        // Funcion para obtener los datos por ID
         public function getById($id){
             $stm = $this->dataBase->prepare("SELECT * FROM {$this->table} WHERE id = :id");
             $stm->bindValue(':id', $id);
@@ -24,6 +27,7 @@
             return $stm->fetch();
         }
 
+        // Funcion para crear un nuevo usuario
         public function store($data){
             // Sentencia SQL
             $sql = "INSERT INTO {$this->table}(";
@@ -63,6 +67,7 @@
             }
         }
 
+        // Funcion para actualizar un nuevo usuarios
         public function update($id, $data){
             // Sentencia sql
             $sql = "UPDATE {$this->table} SET ";
@@ -91,6 +96,7 @@
             }
         }
 
+        // Funcion para eliminar un usuario por ID
         public function destroy($id){
             $sql = "DELETE FROM {$this->table} WHERE id = :id";
             $stm = $this->dataBase->prepare($sql);
